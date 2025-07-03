@@ -1,12 +1,15 @@
 const mongoose= require('mongoose');
+const dbgr = require('debug')("development:mongoose-connection");
+const config  = require("config")
+
 
 mongoose
-.connect('mongodb://localhost:27017/kosh')
+.connect(`${config.get('MONGODB_URI')}/kosh`)
 .then(() => {
-    console.log('Connected to MongoDB');
+    dbgr('Connected to MongoDB');
 })
 .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
+    dbgr('Error connecting to MongoDB:', err);
 });
 
 module.exports = mongoose.connection;
