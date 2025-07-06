@@ -4,11 +4,6 @@ const router = express.Router();
 const ownerModel = require("../models/owner-model"); 
 
 
-router.get('/', (req, res) => {
-    res.send('Owners Home Page');
-}); 
-
-
 if(process.env.NODE_ENV === 'development') {
     router.post('/create', async(req, res) => {
 
@@ -30,5 +25,10 @@ if(process.env.NODE_ENV === 'development') {
         });
     });
 }
+
+router.get('/admin', (req, res) => {
+    res.render('createproducts');
+}); 
+
 
 module.exports = router;
