@@ -15,6 +15,10 @@ router.get('/shop',isLoggedIn, async (req, res) => {
   res.render("shop", { products,success}); 
 });
 
+router.get('/cart',isLoggedIn, async (req, res) => { 
+  res.render("cart");
+});
+
 router.get('/addtocart/:productid',isLoggedIn, async (req, res) => { 
     let user = await userModel.findOne({email : req.user.email})
     user.cart.push(req.params.productid);
