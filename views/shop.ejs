@@ -6,32 +6,11 @@
             </span>
         </div>
         <% } %>
-    <div class="w-full h-screen flex items-start px-20 py-20">
-        <div class="w-[25%] flex h-screen flex-col items-start">
-            <div class="flex items-center gap-2">
-                <h3>sort by</h3>
-                <form action="/shop">
-                    <select class="border-[1px] px-2 py-1" name="sortby" id="">
-                        <option value="popular">Popular</option>
-                        <option value="newest">Newest</option>
-                    </select>
-                </form>
-            </div>
-            <div class="flex flex-col mt-20">
-                <a class="block w-fit mb-2" href="">New Collection</a>
-                <a class="block w-fit mb-2" href="">All Products</a>
-                <a class="block w-fit mb-2" href="">Discounted Products</a>
-            </div>
-            <div class="mt-32">
-                <a class="block w-fit mb-2" href="">Filter by :</a>
-                <a class="block w-fit mb-2" href="">Availability</a>
-                <a class="block w-fit mb-2" href="">Discount</a>
-            </div>
-        </div>
-       <div class="w-[75%] h-screen flex flex-col gap-5">
-        <div class="grid grid-cols-4 gap-5">
+    <div class="w-full min-h-screen flex justify-center px-0 md:px-20 py-10 md:py-20 bg-gradient-to-br from-blue-50 to-blue-100">
+        <div class="w-full min-h-screen flex flex-col gap-5 bg-white/80 rounded-2xl shadow-lg p-8">
+         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <% products.forEach(function(product){ %>
-                <div class="w-full">
+                <div class="w-full rounded-xl shadow-md overflow-hidden bg-white">
                     <div class="w-full h-52 flex flex-wrap gap-4 items-center justify-center bg-[<%= product.bgcolor %>]">
                         <img class="h-[12rem]" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
                     </div>
@@ -40,7 +19,7 @@
                             <h3><%= product.name %></h3>
                             <h4>₹ <%= product.price %></h4>
                         </div>
-                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white" href="/addtocart/<%= product._id %>">
+                        <a class="w-7 h-7 flex items-center justify-center rounded-full bg-white shadow" href="/addtocart/<%= product._id %>">
                             <i class="ri-add-line"></i>
                         </a>
                     </div>
@@ -48,6 +27,5 @@
             <% }) %>
         </div>
     </div>
-
     </div>
     <%- include('./partials/footer') %>
